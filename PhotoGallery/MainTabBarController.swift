@@ -10,7 +10,6 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     let photosVC = PhotosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-    //let navigationVC = UINavigationController(rootViewController: photosVC)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,5 +28,4 @@ class MainTabBarController: UITabBarController {
         
         return navigationVC
     }
-    
 }
