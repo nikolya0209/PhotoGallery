@@ -8,6 +8,7 @@
 import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
+    var networkService = NetworkService()
     
     private lazy var addBurButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonTapped))
@@ -80,5 +81,8 @@ class PhotosCollectionViewController: UICollectionViewController {
 extension PhotosCollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+        networkService.request(searchTerm: searchText) { _, _ in
+            print("123")
+        }
     }
 }
