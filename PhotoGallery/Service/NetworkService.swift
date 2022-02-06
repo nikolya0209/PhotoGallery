@@ -9,12 +9,14 @@ import Foundation
 
 class NetworkService {
     
-    func request(searchTerm: String, completion: (Data?, Error?) -> Void) {
+    func request(searchTerm: String, completion: @escaping (Data?, Error?) -> Void) {
         let parametrs = self.prepareParametrs(searchTearm: searchTerm)
         let url = self.url(params: parametrs)
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = prepareHeaders()
         request.httpMethod = "get"
+        let task = creatDataTask(from: request, completion: completion)
+        task.resume()
     }
     
     private func prepareHeaders() -> [String: String]? {
@@ -43,7 +45,11 @@ class NetworkService {
         return components.url!
     }
     
-    private func creatDataTask(from request: URLRequest, completion: (Data?, Error?) -> Void) -> URLSessionDataTask {
-        
+    private func creatDataTask(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        }
     }
 }
