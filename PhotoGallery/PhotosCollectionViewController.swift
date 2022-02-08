@@ -27,6 +27,8 @@ class PhotosCollectionViewController: UICollectionViewController {
         setupCollectionView()
         setupNavigationBar()
         setupSearchBar()
+       
+        
     }
     
     //MARK: - NavigationItems action
@@ -82,10 +84,10 @@ class PhotosCollectionViewController: UICollectionViewController {
 
 extension PhotosCollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //print(searchText)
-        timer = Timer(timeInterval: 0.5, repeats: false, block: { _ in
-            self.networkDataFetcher.getImages(searchTerm: searchText) { (SearchResults) in
-                SearchResults?.results.map { (photo) in
+        print(searchText)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+            self.networkDataFetcher.getImages(searchTerm: searchText) { (searchResults) in
+                searchResults?.results.map { (photo) in
                     print(photo.urls["small"])
                 }
             }
