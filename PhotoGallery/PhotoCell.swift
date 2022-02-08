@@ -26,12 +26,26 @@ class PhotoCell: UICollectionViewCell {
         return imageView
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            updateSelected()        }
+    }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImageView.image = nil
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        updateSelected()
         setupPhotoImageView()
         setupCheckmarkView()
+    }
+    
+    private func updateSelected() {
+        photoImageView.alpha = isSelected ? 0.7 : 1
+        checkmark.alpha = isSelected ? 1 : 0
     }
     
     private func setupPhotoImageView() {
