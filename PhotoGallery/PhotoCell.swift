@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PhotoCell: UICollectionViewCell {
     static let reuseId = "PhotoCell"
@@ -29,6 +30,10 @@ class PhotoCell: UICollectionViewCell {
     var unsplashPhoto: UnsplashPhoto! {
         didSet {
             let photoUrl = unsplashPhoto.urls["regular"]
+            guard let imageUrl = photoUrl, let url = URL(string: imageUrl) else { return }
+            photoImageView.sd_setImage(with: url, completed: nil)
+            
+            
         }
     }
     
