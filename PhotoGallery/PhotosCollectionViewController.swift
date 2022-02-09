@@ -12,6 +12,9 @@ class PhotosCollectionViewController: UICollectionViewController {
     var networkDataFetcher = NetworkDataFetcher()
     private var timer: Timer?
     
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    
     private var photos = [UnsplashPhoto]()
     
     private lazy var addBurButtonItem: UIBarButtonItem = {
@@ -48,7 +51,11 @@ class PhotosCollectionViewController: UICollectionViewController {
     private func setupCollectionView() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
+        
+        collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.contentInsetAdjustmentBehavior = .automatic
     }
+    
     private func setupNavigationBar() {
         let titleLabel = UILabel()
         titleLabel.text = "PHOTOS"
@@ -96,5 +103,25 @@ extension PhotosCollectionViewController: UISearchBarDelegate {
                 self?.collectionView.reloadData()
             }
         })
+    }
+}
+//MARK: - UICollectionViewDelegateFlowLayout
+extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let photo = photos[indexPath.item]
+        let paddingSpace = sectionInserts.left * (itemsPerRow + 1)
+        let availadleWidth = view.frame.width / itemsPerRow
+        let widthPerItem = availadleWidth / itemsPerRow
+        let height = CGFloat(photo.height) * widthPerItem / CGFloat(photo.width)
+        return CGSize(width: widthPerItem, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
     }
 }
