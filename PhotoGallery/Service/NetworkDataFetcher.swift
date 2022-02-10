@@ -19,7 +19,6 @@ class NetworkDataFetcher {
             }
             let decode = self.decodeJSON(type: SearchResults.self, from: data)
             completion(decode)
-            
         }
     }
     
