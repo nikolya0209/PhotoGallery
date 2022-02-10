@@ -28,7 +28,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         return collectionView.indexPathsForSelectedItems?.count ?? 0
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
@@ -36,7 +35,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         setupNavigationBar()
         setupSearchBar()
        updateNavigationButtonState()
-        
     }
     
     private func updateNavigationButtonState() {
@@ -96,7 +94,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        
     }
     
     //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
