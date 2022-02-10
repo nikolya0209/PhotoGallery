@@ -14,7 +14,6 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        
         viewControllers = [
             generateNavigationController(rootViewController: photosVC, title: "Photos", image: #imageLiteral(resourceName: "icons8-image-gallery-32")),
             generateNavigationController(rootViewController: ViewController(), title: "Favourites", image: #imageLiteral(resourceName: "icons8-love-32"))
