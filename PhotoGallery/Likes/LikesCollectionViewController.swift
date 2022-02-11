@@ -34,7 +34,6 @@ class LikesCollectionViewController: UICollectionViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
-        
         setupEnterLabel()
         setupNavigationBar()
         
