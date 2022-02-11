@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		525B240D27B16C4C009057C5 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B240C27B16C4C009057C5 /* NetworkDataFetcher.swift */; };
 		525B240F27B16D07009057C5 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B240E27B16D07009057C5 /* SearchResults.swift */; };
 		525B241227B2DC5A009057C5 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B241127B2DC5A009057C5 /* PhotoCell.swift */; };
+		525B241627B655D2009057C5 /* LikesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B241527B655D2009057C5 /* LikesCollectionViewController.swift */; };
+		525B241827B65600009057C5 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B241727B65600009057C5 /* LikesCollectionViewCell.swift */; };
+		525B241B27B65671009057C5 /* UIKit + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B241A27B65671009057C5 /* UIKit + Extension.swift */; };
 		7825926083FD7872439987E7 /* Pods_PhotoGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489AF441A9F74C8D390CA268 /* Pods_PhotoGallery.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		525B240C27B16C4C009057C5 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		525B240E27B16D07009057C5 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		525B241127B2DC5A009057C5 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		525B241527B655D2009057C5 /* LikesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewController.swift; sourceTree = "<group>"; };
+		525B241727B65600009057C5 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		525B241A27B65671009057C5 /* UIKit + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extension.swift"; sourceTree = "<group>"; };
 		B0BE56D2FDCCD36A736276D5 /* Pods-PhotoGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.release.xcconfig"; path = "Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.release.xcconfig"; sourceTree = "<group>"; };
 		DE4BDCA3AC4EFEA0FBB483E1 /* Pods-PhotoGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.debug.xcconfig"; path = "Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,8 +87,9 @@
 				525B241027B16D15009057C5 /* Models */,
 				525B240B27B00D0A009057C5 /* Service */,
 				525B240527AEED3F009057C5 /* MainTabBarController.swift */,
-				525B240727AEEFA5009057C5 /* PhotosCollectionViewController.swift */,
-				525B241127B2DC5A009057C5 /* PhotoCell.swift */,
+				525B241327B65568009057C5 /* Photos */,
+				525B241427B6557B009057C5 /* Likes */,
+				525B241927B65650009057C5 /* Helpers */,
 				525B23F727AEEB34009057C5 /* Main.storyboard */,
 				525B23FA27AEEB41009057C5 /* Assets.xcassets */,
 				525B23FC27AEEB41009057C5 /* LaunchScreen.storyboard */,
@@ -108,13 +115,38 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		525B241327B65568009057C5 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				525B240727AEEFA5009057C5 /* PhotosCollectionViewController.swift */,
+				525B241127B2DC5A009057C5 /* PhotoCell.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		525B241427B6557B009057C5 /* Likes */ = {
+			isa = PBXGroup;
+			children = (
+				525B241527B655D2009057C5 /* LikesCollectionViewController.swift */,
+				525B241727B65600009057C5 /* LikesCollectionViewCell.swift */,
+			);
+			path = Likes;
+			sourceTree = "<group>";
+		};
+		525B241927B65650009057C5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				525B241A27B65671009057C5 /* UIKit + Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6AB2B119A7C29511DE125008 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				DE4BDCA3AC4EFEA0FBB483E1 /* Pods-PhotoGallery.debug.xcconfig */,
 				B0BE56D2FDCCD36A736276D5 /* Pods-PhotoGallery.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,11 +273,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				525B240D27B16C4C009057C5 /* NetworkDataFetcher.swift in Sources */,
+				525B241627B655D2009057C5 /* LikesCollectionViewController.swift in Sources */,
+				525B241827B65600009057C5 /* LikesCollectionViewCell.swift in Sources */,
 				525B241227B2DC5A009057C5 /* PhotoCell.swift in Sources */,
 				525B23F627AEEB34009057C5 /* ViewController.swift in Sources */,
 				525B23F227AEEB34009057C5 /* AppDelegate.swift in Sources */,
 				525B240627AEED3F009057C5 /* MainTabBarController.swift in Sources */,
 				525B240827AEEFA5009057C5 /* PhotosCollectionViewController.swift in Sources */,
+				525B241B27B65671009057C5 /* UIKit + Extension.swift in Sources */,
 				525B240A27B00282009057C5 /* NetworkService.swift in Sources */,
 				525B240F27B16D07009057C5 /* SearchResults.swift in Sources */,
 				525B23F427AEEB34009057C5 /* SceneDelegate.swift in Sources */,
