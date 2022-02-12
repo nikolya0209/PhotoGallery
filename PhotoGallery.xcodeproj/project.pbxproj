@@ -83,10 +83,7 @@
 			children = (
 				525B241D27B78DAA009057C5 /* Application */,
 				525B241027B16D15009057C5 /* Models */,
-				525B23F527AEEB34009057C5 /* ViewController.swift */,
-				525B240527AEED3F009057C5 /* MainTabBarController.swift */,
-				525B241327B65568009057C5 /* Photos */,
-				525B241427B6557B009057C5 /* Likes */,
+				525B241F27B78F13009057C5 /* ViewControllers */,
 				525B240B27B00D0A009057C5 /* Service */,
 				525B241C27B78D24009057C5 /* Extensions */,
 				525B241927B65650009057C5 /* Helpers */,
@@ -155,6 +152,17 @@
 				525B23F327AEEB34009057C5 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		525B241F27B78F13009057C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				525B23F527AEEB34009057C5 /* ViewController.swift */,
+				525B240527AEED3F009057C5 /* MainTabBarController.swift */,
+				525B241327B65568009057C5 /* Photos */,
+				525B241427B6557B009057C5 /* Likes */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		6AB2B119A7C29511DE125008 /* Pods */ = {
