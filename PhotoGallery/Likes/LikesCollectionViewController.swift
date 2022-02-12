@@ -30,13 +30,11 @@ class LikesCollectionViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(LikesCollectionViewCell.self, forCellWithReuseIdentifier: LikesCollectionViewCell.reuseId)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
         setupEnterLabel()
         setupNavigationBar()
-        
     }
     
     // MARK: - Setup UI Elements
