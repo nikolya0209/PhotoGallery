@@ -81,19 +81,15 @@
 		525B23F027AEEB34009057C5 /* PhotoGallery */ = {
 			isa = PBXGroup;
 			children = (
-				525B23F127AEEB34009057C5 /* AppDelegate.swift */,
-				525B23F327AEEB34009057C5 /* SceneDelegate.swift */,
+				525B241D27B78DAA009057C5 /* Application */,
+				525B241027B16D15009057C5 /* Models */,
 				525B23F527AEEB34009057C5 /* ViewController.swift */,
 				525B240527AEED3F009057C5 /* MainTabBarController.swift */,
-				525B241027B16D15009057C5 /* Models */,
-				525B240B27B00D0A009057C5 /* Service */,
 				525B241327B65568009057C5 /* Photos */,
 				525B241427B6557B009057C5 /* Likes */,
+				525B240B27B00D0A009057C5 /* Service */,
+				525B241C27B78D24009057C5 /* Extensions */,
 				525B241927B65650009057C5 /* Helpers */,
-				525B23F727AEEB34009057C5 /* Main.storyboard */,
-				525B23FA27AEEB41009057C5 /* Assets.xcassets */,
-				525B23FC27AEEB41009057C5 /* LaunchScreen.storyboard */,
-				525B23FF27AEEB41009057C5 /* Info.plist */,
 			);
 			path = PhotoGallery;
 			sourceTree = "<group>";
@@ -136,9 +132,29 @@
 		525B241927B65650009057C5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				525B241A27B65671009057C5 /* UIKit + Extension.swift */,
+				525B23F727AEEB34009057C5 /* Main.storyboard */,
+				525B23FA27AEEB41009057C5 /* Assets.xcassets */,
+				525B23FC27AEEB41009057C5 /* LaunchScreen.storyboard */,
+				525B23FF27AEEB41009057C5 /* Info.plist */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		525B241C27B78D24009057C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				525B241A27B65671009057C5 /* UIKit + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		525B241D27B78DAA009057C5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				525B23F127AEEB34009057C5 /* AppDelegate.swift */,
+				525B23F327AEEB34009057C5 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		6AB2B119A7C29511DE125008 /* Pods */ = {
@@ -433,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8V9DS8345;
-				INFOPLIST_FILE = PhotoGallery/Info.plist;
+				INFOPLIST_FILE = PhotoGallery/Helpers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8V9DS8345;
-				INFOPLIST_FILE = PhotoGallery/Info.plist;
+				INFOPLIST_FILE = PhotoGallery/Helpers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
