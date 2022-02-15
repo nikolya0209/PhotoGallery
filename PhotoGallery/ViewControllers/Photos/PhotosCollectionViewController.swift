@@ -51,8 +51,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         setupCollectionView()
         setupNavigationBar()
         setupSearchBar()
-       //updateNavigationButtonState()
-        
         setupEnterLabel()
         setupSpinner()
     }
@@ -66,7 +64,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         self.selectedImages.removeAll()
         self.collectionView.selectItem(at: nil, animated: true, scrollPosition: [])
         updateNavigationButtonState()
-        //enterSearchTermLabel.isHidden = true
     }
     
     //MARK: - NavigationItems action
@@ -206,6 +203,17 @@ extension PhotosCollectionViewController: UISearchBarDelegate {
         })
     }
 }
+
+// MARK: - WaterfallLayoutDelegate
+extension PhotosCollectionViewController: WaterfallLayoutDelegate {
+    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let photo = photos[indexPath.item]
+        //        print("photo.width: \(photo.width) photo.height: \(photo.height)\n")
+        return CGSize(width: photo.width, height: photo.height)
+    }
+}
+
 //MARK: - UICollectionViewDelegateFlowLayout
 /*
 extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -229,12 +237,4 @@ extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 */
 
-// MARK: - WaterfallLayoutDelegate
-extension PhotosCollectionViewController: WaterfallLayoutDelegate {
-    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let photo = photos[indexPath.item]
-        //        print("photo.width: \(photo.width) photo.height: \(photo.height)\n")
-        return CGSize(width: photo.width, height: photo.height)
-    }
-}
+

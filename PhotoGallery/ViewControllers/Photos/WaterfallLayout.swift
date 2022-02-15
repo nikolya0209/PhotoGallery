@@ -5,7 +5,6 @@
 //  Created by MacBookPro on 15.02.2022.
 //
 
-import Foundation
 import UIKit
 
 protocol WaterfallLayoutDelegate: AnyObject {
@@ -168,12 +167,10 @@ class WaterfallLayout: UICollectionViewLayout {
             let pagingViewAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: pagingViewIndexPath)
             pagingViewAttributes.frame = CGRect(x: 0, y: contentHeight, width: collectionView.frame.width, height: 44)
             self.pagingViewAttributes = pagingViewAttributes
-            
             contentHeight += 44
         } else {
             self.pagingViewAttributes = nil
         }
-        
         contentHeight += itemSpacing
     }
     
