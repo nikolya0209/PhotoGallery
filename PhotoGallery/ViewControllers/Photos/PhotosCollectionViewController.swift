@@ -11,8 +11,8 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     var networkDataFetcher = NetworkDataFetcher()
     private var timer: Timer?
-    private let itemsPerRow: CGFloat = 2
-    private let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+//    private let itemsPerRow: CGFloat = 2
+//    private let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
     private var photos = [UnsplashPhoto]()
     private var selectedImages = [UIImage]()
@@ -40,7 +40,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     }()
     
     private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
@@ -66,7 +66,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         self.selectedImages.removeAll()
         self.collectionView.selectItem(at: nil, animated: true, scrollPosition: [])
         updateNavigationButtonState()
-        enterSearchTermLabel.isHidden = true
+        //enterSearchTermLabel.isHidden = true
     }
     
     //MARK: - NavigationItems action
@@ -120,12 +120,17 @@ class PhotosCollectionViewController: UICollectionViewController {
         collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.contentInsetAdjustmentBehavior = .automatic
         collectionView.allowsMultipleSelection = true
+        
+        if let waterfallLayout = collectionViewLayout as? WaterfallLayout {
+            waterfallLayout.delegate = self
+        }
     }
     
     private func setupNavigationBar() {
         let titleLabel = UILabel(text: "PHOTOS", font: .systemFont(ofSize: 15, weight: .medium), textColor: #colorLiteral(red: 0.5019607843, green: 0.4980392157, blue: 0.4980392157, alpha: 1))
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
         navigationItem.rightBarButtonItems = [actionBarButtonItem, addBarButtonItem]
+        navigationController?.hidesBarsOnSwipe = true
         actionBarButtonItem.isEnabled = false
         addBarButtonItem.isEnabled = false
     }
@@ -154,6 +159,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        enterSearchTermLabel.isHidden = photos.count != 0
         return photos.count
     }
     
@@ -201,6 +207,7 @@ extension PhotosCollectionViewController: UISearchBarDelegate {
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
+/*
 extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -218,5 +225,16 @@ extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInserts.left
+    }
+}
+*/
+
+// MARK: - WaterfallLayoutDelegate
+extension PhotosCollectionViewController: WaterfallLayoutDelegate {
+    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let photo = photos[indexPath.item]
+        //        print("photo.width: \(photo.width) photo.height: \(photo.height)\n")
+        return CGSize(width: photo.width, height: photo.height)
     }
 }
